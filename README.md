@@ -67,7 +67,9 @@ Vue.use(VueSuperSlide)
     <a class="next" href="javascript:void(0)" slot="button-next"></a>
   </superslide>
 </template>
+```
 
+```javascript
 <script>
   export default {
     name: "slideBox",
@@ -80,6 +82,9 @@ Vue.use(VueSuperSlide)
       }
     }
 </script>
+```
+
+```css
 <style type="text/css">
   /* 本例子css */
   .slideBox {
