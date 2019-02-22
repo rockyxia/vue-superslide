@@ -1,0 +1,19 @@
+# 忽略目录
+build/
+dist/
+docs/
+config/
+examples/
+tests/
+node_modules/
+public/
+
+# 忽略指定文件
+*.map
+.browserslistrc
+cypress.json
+babel.config.js
+postcss.config.js
+.eslintrc.js
+.prettierrc
+vue.config.js

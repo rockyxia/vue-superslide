@@ -1,0 +1,10 @@
+[
+  {
+    "router": "/demo/slideTxtBox",
+    "title": "1. 标签切换 / 书签切换 / 默认效果"
+  },
+  {
+    "router": "/demo/slideBox",
+    "title": "2. 焦点图 / 幻灯片"
+  }
+]
