@@ -4,11 +4,7 @@
   "description": "SuperSlide component for Vue",
   "main": "lib/vue-superslide.umd.min.js",
   "keyword": "vue-superslide superslide",
-  "author": {
-    "name": "Rockyxia",
-    "email": "543152889@qq.com",
-    "url": "https://github.com/rockyxia"
-  },
+  "author": "rockyxia",
   "private": false,
   "license": "MIT",
   "bugs": {

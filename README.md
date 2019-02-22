@@ -6,7 +6,7 @@
 
 [Demo Page](http://rockyxia.github.io/vue-superslide)
 
-[CDN Example](#)
+[CDN Example](https://codepen.io/pen/qgzqme)
 
 # Install
 
