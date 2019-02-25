@@ -1,36 +1,41 @@
-import Vue from "vue";
-import Router from "vue-router";
+import Vue from 'vue'
+import Router from 'vue-router'
 
-Vue.use(Router);
+Vue.use(Router)
 
 export default new Router({
   routes: [
     {
-      path: "*",
-      redirect: "/"
+      path: '*',
+      redirect: '/'
     },
     {
-      path: "/",
-      name: "index",
-      component: require("@/pages/index").default,
+      path: '/',
+      name: 'index',
+      component: require('@/pages/index').default,
       meta: {
         requireAuth: true // 该路由项需要权限校验
       }
     },
     {
-      path: "/demo/",
-      name: "demo",
-      component: require("@/pages/demo").default,
+      path: '/demo/',
+      name: 'demo',
+      component: require('@/pages/demo').default,
       children: [
         {
-          path: "slideBox",
-          name: "slideBox",
-          component: require("@/pages/2.slideBox").default
+          path: 'slideBox',
+          name: 'slideBox',
+          component: require('@/pages/2.slideBox').default
         },
         {
-          path: "slideTxtBox",
-          name: "slideTxtBox",
-          component: require("@/pages/1.slideTxtBox").default
+          path: 'slideTxtBox',
+          name: 'slideTxtBox',
+          component: require('@/pages/1.slideTxtBox').default
+        },
+        {
+          path: 'picScrollLeft',
+          name: 'picScrollLeft',
+          component: require('@/pages/3.picScrollLeft').default
         }
       ]
     }
@@ -66,4 +71,4 @@ export default new Router({
     //   ]
     // }
   ]
-});
+})

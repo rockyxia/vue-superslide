@@ -6,5 +6,9 @@
   {
     "router": "/demo/slideBox",
     "title": "2. 焦点图 / 幻灯片"
+  },
+  {
+    "router": "/demo/picScrollLeft",
+    "title": "3. 图片滚动-左"
   }
 ]

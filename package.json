@@ -1,6 +1,6 @@
 {
   "name": "vue-superslide",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "SuperSlide component for Vue",
   "main": "lib/vue-superslide.umd.min.js",
   "keyword": "vue-superslide superslide",

@@ -23,7 +23,7 @@
 
           <div
             class="hd"
-            slot="pagination"
+            slot="titCell"
           >
             <ul>
               <li class="on">1</li>
@@ -35,12 +35,12 @@
           <a
             class="prev"
             href="javascript:void(0)"
-            slot="button-prev"
+            slot="prev"
           ></a>
           <a
             class="next"
             href="javascript:void(0)"
-            slot="button-next"
+            slot="next"
           ></a>
         </superslide>
       </div>

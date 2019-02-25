@@ -109,7 +109,7 @@
 
           <div
             class="hd"
-            slot="pagination"
+            slot="titCell"
           >
             <ul>
               <li>教育</li>
@@ -123,11 +123,11 @@
           <a
             class="next"
             href="javascript:void(0)"
-            slot="button-next"
+            slot="next"
           ></a><a
             class="prev"
             href="javascript:void(0)"
-            slot="button-prev"
+            slot="prev"
           ></a>
 
         </superslide>

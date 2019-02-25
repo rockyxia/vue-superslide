@@ -1,16 +1,10 @@
 <template>
   <div class="superslide-container">
-    <slot
-      name="pagination"
-      v-if="!position"
-    ></slot>
+    <slot name="titCell"></slot>
     <slot></slot>
-    <slot
-      name="pagination"
-      v-if="position"
-    ></slot>
-    <slot name="button-prev"></slot>
-    <slot name="button-next"></slot>
+    <slot name="prev"></slot>
+    <slot name="next"></slot>
+    <slot name="pageStateCell"></slot>
   </div>
 </template>
 
@@ -52,16 +46,10 @@ export default {
       default: () => ({})
     }
   },
-  data () {
-    return {
-      position: false
-    }
-  },
   mounted: function () {
     this.create();
   },
   destroyed: function () {
-    // $(this.$el).slick('unslick');
   },
   methods: {
     create: function () {

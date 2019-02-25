@@ -16,7 +16,7 @@
 <!-- import Vue before SuperSlide -->
 <script src="https://unpkg.com/vue/dist/vue.js"></script>
 <!-- import JavaScript -->
-<script src="path/to/vsuperslide.umd.min.js"></script>
+<script src="path/to/vue-superslide.umd.min.js"></script>
 ```
 
 #### NPM
@@ -34,7 +34,7 @@ import VueSuperSlide from 'vue-superslide'
 Vue.use(VueSuperSlide)
 ```
 
-### SPA
+### SPA Example
 
 ```html
 <template>
@@ -55,7 +55,8 @@ Vue.use(VueSuperSlide)
     </div>
 
     <!-- Optional controls -->
-    <div class="hd" slot="pagination">
+    <!-- slot="pagination" -->
+    <div class="hd" slot="titCell">
       <ul>
         <li class="on">1</li>
         <li class="">2</li>
@@ -63,8 +64,13 @@ Vue.use(VueSuperSlide)
       </ul>
     </div>
 
-    <a class="prev" href="javascript:void(0)" slot="button-prev"></a>
-    <a class="next" href="javascript:void(0)" slot="button-next"></a>
+    <!-- slot="prev" -->
+    <a class="prev" href="javascript:void(0)" slot="prev"></a>
+    <!-- slot="next" -->
+    <a class="next" href="javascript:void(0)" slot="next"></a>
+
+    <!-- slot="pageStateCell" -->
+    <span class="pageState" slot="pageStateCell"></span>
   </superslide>
 </template>
 ```
