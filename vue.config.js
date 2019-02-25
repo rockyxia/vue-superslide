@@ -1,6 +1,6 @@
 const path = require('path')
 module.exports = {
-  baseUrl: './',
+  publicPath: './',
   productionSourceMap: false,
   // 输出文件目录
   outputDir: 'docs',

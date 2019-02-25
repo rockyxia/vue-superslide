@@ -16,7 +16,7 @@
 <!-- import Vue before SuperSlide -->
 <script src="https://unpkg.com/vue/dist/vue.js"></script>
 <!-- import JavaScript -->
-<script src="path/to/vue-superslide.umd.min.js"></script>
+<script src="https://unpkg.com/vue-superslide/lib/vue-superslide.umd.min.js"></script>
 ```
 
 #### NPM
