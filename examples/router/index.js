@@ -36,6 +36,41 @@ export default new Router({
           path: 'picScrollLeft',
           name: 'picScrollLeft',
           component: require('@/pages/3.picScrollLeft').default
+        },
+        {
+          path: 'picScrollTop',
+          name: 'picScrollTop',
+          component: require('@/pages/4.picScrollTop').default
+        },
+        {
+          path: 'picMarqueeLeft',
+          name: 'picMarqueeLeft',
+          component: require('@/pages/5.picMarqueeLeft').default
+        },
+        {
+          path: 'picMarqueeTop',
+          name: 'picMarqueeTop',
+          component: require('@/pages/6.picMarqueeTop').default
+        },
+        {
+          path: 'txtScrollLeft',
+          name: 'txtScrollLeft',
+          component: require('@/pages/7.txtScrollLeft').default
+        },
+        {
+          path: 'txtScrollTop',
+          name: 'txtScrollTop',
+          component: require('@/pages/8.txtScrollTop').default
+        },
+        {
+          path: 'txtMarqueeLeft',
+          name: 'txtMarqueeLeft',
+          component: require('@/pages/9.txtMarqueeLeft').default
+        },
+        {
+          path: 'txtMarqueeTop',
+          name: 'txtMarqueeTop',
+          component: require('@/pages/10.txtMarqueeTop').default
         }
       ]
     }

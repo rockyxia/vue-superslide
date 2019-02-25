@@ -1,15 +1,22 @@
 <template>
   <div class="header">
-    <router-link
-      v-if="showIndex"
-      to="/"
-    >返回首页</router-link>
-    <router-link
-      v-for="(example, index) in examplesList"
-      :key="index"
-      :to="example.router"
-      v-text="example.title"
-    ></router-link>
+    <ul>
+      <li>
+        <router-link
+          v-if="showIndex"
+          to="/"
+        >返回首页</router-link>
+      </li>
+      <li
+        v-for="(example, index) in examplesList"
+        :key="index"
+      >
+        <router-link
+          :to="example.router"
+          v-text="example.title"
+        ></router-link>
+      </li>
+    </ul>
   </div>
 </template>
 
@@ -37,7 +44,6 @@ export default {
   padding-top: 30px;
   a {
     font-size: 16px;
-    display: block;
     color: #39a4dc;
 
     &:hover {

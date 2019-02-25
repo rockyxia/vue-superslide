@@ -1,8 +1,8 @@
 <template>
   <div>
     <div class="titlebox">
-      <h3><span>3. </span>图片滚动-左<a
-          href="https://github.com/rockyxia/vue-superslide/tree/master/examples/pages/3.picScrollLeft.vue"
+      <h3><span>5. </span>图片无缝滚动-左<a
+          href="https://github.com/rockyxia/vue-superslide/tree/master/examples/pages/5.picMarqueeLeft.vue"
           target="_blank"
         >查看本Example完整代码</a></h3>
     </div>
@@ -11,7 +11,7 @@
       <div class="demobox">
         <superslide
           :options="options"
-          class="picScroll-left"
+          class="picMarquee-left"
           v-if="hackReset"
         >
           <div class="bd">
@@ -46,18 +46,10 @@
           <div
             class="hd"
             slot="titCell"
-          >
-            <ul></ul>
-          </div>
-
-          <span
-            class="pageState"
-            slot="pageStateCell"
-          ></span>
+          ></div>
 
           <a
             class="prev"
-            :class="{additional: isAdditional}"
             href="javascript:void(0)"
             slot="prev"
           ></a>
@@ -89,36 +81,9 @@
                   v-model="effect"
                 >
                   <option
-                    value="left"
+                    value="leftMarquee"
                     class="show"
-                  >left</option>
-                  <option value="leftLoop">leftLoop</option>
-                </select>
-              </td>
-              <td class="n">自动运行<i>[autoPlay]</i>:</td>
-              <td>
-                <select
-                  name="autoPlay"
-                  v-model="autoPlay"
-                >
-                  <option value="false">false</option>
-                  <option
-                    selected="selected"
-                    value="true"
-                  >true</option>
-                </select>
-              </td>
-            </tr>
-            <tr>
-              <td class="n">滚动个数<i>[scroll]</i>:</td>
-              <td>
-                <select
-                  name="scroll"
-                  v-model="scroll"
-                >
-                  <option value="1">1</option>
-                  <option value="2">2</option>
-                  <option value="3">3</option>
+                  >leftMarquee</option>
                 </select>
               </td>
               <td class="n">可视个数<i>[vis]</i>:</td>
@@ -137,32 +102,28 @@
               </td>
             </tr>
             <tr>
-              <td class="n">缓动效果<i>[easing]</i>:</td>
+              <td class="n">运行速度<i>[interTime]</i>:</td>
               <td>
                 <select
-                  rel="string"
-                  name="easing"
-                  v-model="easing"
+                  name="interTime"
+                  v-model="interTime"
                 >
-                  <option value="swing">swing</option>
-                  <option value="easeOutCirc">easeOutCirc</option>
-                  <option value="easeInQuint">easeInQuint</option>
-                  <option value="easeInBack">easeInBack</option>
-                  <option value="easeOutBounce">easeOutBounce</option>
-                  <option value="easeOutElastic">easeOutElastic</option>
-                  <option value="easing-more">更多</option>
+                  <option
+                    value="50"
+                    class="show"
+                  >50</option>
+                  <option value="25">25</option>
+                  <option value="10">10</option>
                 </select>
               </td>
-              <td class="n">效果速度<i>[delayTime]</i>:</td>
+              <td class="n">默认反方向运动<i>[opp]</i>:</td>
               <td>
                 <select
-                  name="delayTime"
-                  v-model="delayTime"
+                  name="opp"
+                  v-model="opp"
                 >
-                  <option value="500">500</option>
-                  <option value="700">700</option>
-                  <option value="1000">1000</option>
-                  <option value="0">0</option>
+                  <option value="false">false</option>
+                  <option value="true">true</option>
                 </select>
               </td>
             </tr>
@@ -180,7 +141,10 @@
                   <option value="false">false</option>
                 </select>
               </td>
-              <td class="n">触发方式<i>[trigger]</i>:</td>
+              <td
+                class="n new"
+                title="v2.1 新增：长按按钮10倍加速运行。"
+              >触发方式<i>[trigger]</i>:</td>
               <td>
                 <select
                   rel="string"
@@ -188,7 +152,10 @@
                   v-model="trigger"
                 >
                   <option value="mouseover">mouseover</option>
-                  <option value="click">click</option>
+                  <option
+                    value="click"
+                    selected="selected"
+                  >click</option>
                 </select>
               </td>
             </tr>
@@ -210,9 +177,6 @@
           </tbody>
         </table>
         <p class="jsCode">当前调用参数：<span class="curJsCode">options: {{options}}</span></p>
-        <p class="notice">注意1：不同缓动效果设置适当“效果速度”，会有最佳效果。<br>
-          注意2：现在是全按钮开启情况，不需要按钮的时候，只要删除按钮html或者隐藏即可。
-        </p>
       </div>
     </div>
   </div>
@@ -224,64 +188,41 @@ export default {
   data () {
     return {
       hackReset: true,
-      effect: 'left',
-      autoPlay: true,
-      scroll: 1,
+      effect: 'leftMarquee',
       vis: 3,
-      trigger: 'mouseover',
-      easing: 'swing',
-      delayTime: 500,
-      mouseOverStop: true,
+      interTime: 50,
+      opp: false,
       pnLoop: true,
-      isAdditional: false,
-      options: { titCell: ".hd ul", mainCell: ".bd ul", autoPage: true, effect: "left", autoPlay: true, vis: 3 }
+      trigger: 'click',
+      mouseOverStop: true,
+      options: { mainCell: ".bd ul", autoPlay: true, effect: "leftMarquee", vis: 3, interTime: 50, trigger: "click" }
     }
   },
   watch: {
     effect (val) {
       console.log("effect:" + val)
-      if (val == "leftLoop") {
-        this.isAdditional = true
-      } else {
-        this.isAdditional = false
-      }
       this.options.effect = val
       this.hackResetFun()
 
-    },
-    autoPlay (val) {
-      console.log("autoPlay:" + val)
-      this.options.autoPlay = val
-      this.hackResetFun()
-    },
-    scroll (val) {
-      console.log("scroll:" + val)
-      this.options.scroll = val
-      this.hackResetFun()
     },
     vis (val) {
       console.log("vis:" + val)
       this.options.vis = val
       this.hackResetFun()
     },
+    interTime (val) {
+      console.log("interTime:" + val)
+      this.options.interTime = val
+      this.hackResetFun()
+    },
+    opp (val) {
+      console.log("opp:" + val)
+      this.options.opp = val
+      this.hackResetFun()
+    },
     trigger (val) {
       console.log("trigger:" + val)
       this.options.trigger = val
-      this.hackResetFun()
-    },
-    easing (val) {
-      console.log("easing:" + val)
-      if (val == "easing-more") {
-        window.open("http://www.superslide2.com/otherDemo/T2.1/easing.html")
-        return
-      } else {
-        this.options.easing = val
-        this.hackResetFun()
-      }
-    },
-    delayTime (val) {
-      console.log("delayTime:" + val)
-      this.options.delayTime = val
       this.hackResetFun()
     },
     mouseOverStop (val) {
@@ -309,22 +250,23 @@ export default {
 
 <style>
 /* 本例子css */
-.picScroll-left {
+.picMarquee-left {
   overflow: hidden;
   position: relative;
   border: 1px solid #ccc;
 }
-.picScroll-left .hd {
+.picMarquee-left .hd {
   overflow: hidden;
   height: 30px;
   background: #f4f4f4;
   padding: 0 10px;
 }
-.picScroll-left .prev,
-.picScroll-left .next {
+
+.picMarquee-left .prev,
+.picMarquee-left .next {
   position: absolute;
   top: 10px;
-  right: 78px;
+  right: 20px;
 
   display: block;
   width: 5px;
@@ -332,76 +274,47 @@ export default {
   margin-right: 5px;
   overflow: hidden;
   cursor: pointer;
-  background: url('../assets/images/arrow.png') 0 0 no-repeat;
+  background: url(../assets/images/arrow.png) no-repeat;
 }
-.picScroll-left .next {
-  right: 9px;
+.picMarquee-left .next {
+  right: 8px;
   background-position: 0 -50px;
 }
-.picScroll-left .prev.additional {
-  right: 105px;
-}
-.picScroll-left .prevStop {
+.picMarquee-left .prevStop {
   background-position: -60px 0;
 }
-.picScroll-left .nextStop {
+.picMarquee-left .nextStop {
   background-position: -60px -50px;
 }
-.picScroll-left .hd ul {
-  float: right;
-  margin-right: 10px;
-  overflow: hidden;
-  zoom: 1;
-  margin-top: 10px;
-  zoom: 1;
-}
-.picScroll-left .hd ul li {
-  float: left;
-  width: 9px;
-  height: 9px;
-  overflow: hidden;
-  margin-right: 5px;
-  text-indent: -999px;
-  cursor: pointer;
-  background: url('../assets/images/icoCircle.gif') 0 -9px no-repeat;
-}
-.picScroll-left .hd ul li.on {
-  background-position: 0 0;
-}
-.picScroll-left .pageState {
-  position: absolute;
-  top: 3px;
-  left: 10px;
-}
 
-.picScroll-left .bd {
+.picMarquee-left .bd {
   padding: 10px;
 }
-.picScroll-left .bd ul {
+.picMarquee-left .bd ul {
   overflow: hidden;
   zoom: 1;
 }
-.picScroll-left .bd ul li {
+.picMarquee-left .bd ul li {
   margin: 0 8px;
   float: left;
   _display: inline;
   overflow: hidden;
   text-align: center;
 }
-.picScroll-left .bd ul li .pic {
+.picMarquee-left .bd ul li .pic {
   text-align: center;
 }
-.picScroll-left .bd ul li .pic img {
+.picMarquee-left .bd ul li .pic img {
   width: 120px;
   height: 90px;
   display: block;
   padding: 2px;
   border: 1px solid #ccc;
 }
-.picScroll-left .bd ul li .pic a:hover img {
+.picMarquee-left .bd ul li .pic a:hover img {
   border-color: #999;
 }
-.picScroll-left .bd ul li .title {
+.picMarquee-left .bd ul li .title {
   line-height: 24px;
 }
 </style>

@@ -54,8 +54,8 @@ Vue.use(VueSuperSlide)
       </ul>
     </div>
 
-    <!-- Optional controls -->
-    <!-- slot="pagination" -->
+    <!-- Optional controls slots -->
+    <!-- slot="titCell" -->
     <div class="hd" slot="titCell">
       <ul>
         <li class="on">1</li>

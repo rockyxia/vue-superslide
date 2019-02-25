@@ -249,7 +249,6 @@ export default {
       trigger: 'mouseover',
       easing: 'swing',
       delayTime: 500,
-      mouseOverStop: true,
       pnLoop: true,
       options: {
       }
@@ -284,11 +283,6 @@ export default {
     delayTime (val) {
       console.log("delayTime:" + val)
       this.options.delayTime = val
-      this.hackResetFun()
-    },
-    mouseOverStop (val) {
-      console.log("mouseOverStop:" + val)
-      this.options.mouseOverStop = val
       this.hackResetFun()
     },
     pnLoop (val) {

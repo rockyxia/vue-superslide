@@ -10,5 +10,33 @@
   {
     "router": "/demo/picScrollLeft",
     "title": "3. 图片滚动-左"
+  },
+  {
+    "router": "/demo/picScrollTop",
+    "title": "4. 图片滚动-上"
+  },
+  {
+    "router": "/demo/picMarqueeLeft",
+    "title": "5. 图片无缝滚动-左"
+  },
+  {
+    "router": "/demo/picMarqueeTop",
+    "title": "6. 图片无缝滚动-上"
+  },
+  {
+    "router": "/demo/txtScrollLeft",
+    "title": "7. 文字滚动-左"
+  },
+  {
+    "router": "/demo/txtScrollTop",
+    "title": "8. 文字滚动-上"
+  },
+  {
+    "router": "/demo/txtMarqueeLeft",
+    "title": "9. 文字无缝滚动-左"
+  },
+  {
+    "router": "/demo/txtMarqueeTop",
+    "title": "10. 文字无缝滚动-上"
   }
 ]

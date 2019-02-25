@@ -1,45 +1,27 @@
 <template>
   <div>
     <div class="titlebox">
-      <h3><span>3. </span>图片滚动-左<a
-          href="https://github.com/rockyxia/vue-superslide/tree/master/examples/pages/3.picScrollLeft.vue"
+      <h3><span>7. </span>文字滚动-左<a
+          href="https://github.com/rockyxia/vue-superslide/tree/master/examples/pages/7.txtScrollLeft.vue"
           target="_blank"
         >查看本Example完整代码</a></h3>
     </div>
-
     <div class="container clearfix">
       <div class="demobox">
         <superslide
           :options="options"
-          class="picScroll-left"
+          class="txtScroll-left"
           v-if="hackReset"
         >
+
           <div class="bd">
-            <ul class="picList">
-              <li>
-                <div class="pic"><a href="javascript:;"><img src="http://www.superslide2.com/demo/images/pic1.jpg" /></a></div>
-                <div class="title"><a href="javascript:;">效果图1</a></div>
-              </li>
-              <li>
-                <div class="pic"><a href="javascript:;"><img src="http://www.superslide2.com/demo/images/pic2.jpg" /></a></div>
-                <div class="title"><a href="javascript:;">效果图2</a></div>
-              </li>
-              <li>
-                <div class="pic"><a href="javascript:;"><img src="http://www.superslide2.com/demo/images/pic3.jpg" /></a></div>
-                <div class="title"><a href="javascript:;">效果图3</a></div>
-              </li>
-              <li>
-                <div class="pic"><a href="javascript:;"><img src="http://www.superslide2.com/demo/images/pic4.jpg" /></a></div>
-                <div class="title"><a href="javascript:;">效果图4</a></div>
-              </li>
-              <li>
-                <div class="pic"><a href="javascript:;"><img src="http://www.superslide2.com/demo/images/pic5.jpg" /></a></div>
-                <div class="title"><a href="javascript:;">效果图5</a></div>
-              </li>
-              <li>
-                <div class="pic"><a href="javascript:;"><img src="http://www.superslide2.com/demo/images/pic6.jpg" /></a></div>
-                <div class="title"><a href="javascript:;">效果图6</a></div>
-              </li>
+            <ul class="infoList">
+              <li><a href="javascript:;">中国打破了世界软件巨头规则</a><span>[11-11]</span></li>
+              <li><a href="javascript:;">施强：高端专业语言教学</a><span>[11-11]</span></li>
+              <li><a href="javascript:;">新加坡留学，国际双语课程</a><span>[11-11]</span></li>
+              <li><a href="javascript:;">高考后留学日本名校随你选</a><span>[11-11]</span></li>
+              <li><a href="javascript:;">教育培训行业优势资源推介</a><span>[11-11]</span></li>
+              <li><a href="javascript:;">女友坚持警局完婚不抛弃</a><span>[11-11]</span></li>
             </ul>
           </div>
 
@@ -47,7 +29,11 @@
             class="hd"
             slot="titCell"
           >
-            <ul></ul>
+            <ul>
+              <li>1</li>
+              <li>2</li>
+              <li>3</li>
+            </ul>
           </div>
 
           <span
@@ -57,9 +43,9 @@
 
           <a
             class="prev"
-            :class="{additional: isAdditional}"
             href="javascript:void(0)"
             slot="prev"
+            :class="{additional:isAdditional, additional2:isAdditional2}"
           ></a>
           <a
             class="next"
@@ -117,8 +103,10 @@
                   v-model="scroll"
                 >
                   <option value="1">1</option>
-                  <option value="2">2</option>
-                  <option value="3">3</option>
+                  <option
+                    value="2"
+                    selected="selected"
+                  >2</option>
                 </select>
               </td>
               <td class="n">可视个数<i>[vis]</i>:</td>
@@ -128,11 +116,10 @@
                   v-model="vis"
                 >
                   <option value="1">1</option>
-                  <option value="2">2</option>
                   <option
-                    value="3"
+                    value="2"
                     selected="selected"
-                  >3</option>
+                  >2</option>
                 </select>
               </td>
             </tr>
@@ -144,6 +131,7 @@
                   name="easing"
                   v-model="easing"
                 >
+
                   <option value="swing">swing</option>
                   <option value="easeOutCirc">easeOutCirc</option>
                   <option value="easeInQuint">easeInQuint</option>
@@ -215,39 +203,42 @@
         </p>
       </div>
     </div>
+
   </div>
 </template>
 
 <script>
 export default {
-  name: "picScrollLeft",
+  name: "slideBox",
   data () {
     return {
       hackReset: true,
       effect: 'left',
       autoPlay: true,
-      scroll: 1,
-      vis: 3,
+      scroll: 2,
+      vis: 2,
       trigger: 'mouseover',
       easing: 'swing',
       delayTime: 500,
-      mouseOverStop: true,
       pnLoop: true,
+      mouseOverStop: true,
       isAdditional: false,
-      options: { titCell: ".hd ul", mainCell: ".bd ul", autoPage: true, effect: "left", autoPlay: true, vis: 3 }
+      isAdditional2: false,
+      options: { titCell: ".hd ul", mainCell: ".bd ul", autoPage: true, effect: "left", autoPlay: true, scroll: 2, vis: 2 }
     }
   },
   watch: {
     effect (val) {
       console.log("effect:" + val)
-      if (val == "leftLoop") {
-        this.isAdditional = true
-      } else {
+      if (val == "leftLoop" && this.scroll == "1") {
+        this.isAdditional2 = true
         this.isAdditional = false
+      } else if (val == "left" && this.scroll == "1") {
+        this.isAdditional2 = false
+        this.isAdditional = true
       }
       this.options.effect = val
       this.hackResetFun()
-
     },
     autoPlay (val) {
       console.log("autoPlay:" + val)
@@ -256,6 +247,17 @@ export default {
     },
     scroll (val) {
       console.log("scroll:" + val)
+      if (val == "1" && this.effect == "left") {
+        this.isAdditional = true
+        this.isAdditional2 = false
+      } else if (val == "1" && this.effect == "leftLoop") {
+        this.isAdditional = false
+        this.isAdditional2 = true
+      } else {
+        this.isAdditional = false
+        this.isAdditional2 = false
+      }
+
       this.options.scroll = val
       this.hackResetFun()
     },
@@ -284,14 +286,14 @@ export default {
       this.options.delayTime = val
       this.hackResetFun()
     },
-    mouseOverStop (val) {
-      console.log("mouseOverStop:" + val)
-      this.options.mouseOverStop = val
-      this.hackResetFun()
-    },
     pnLoop (val) {
       console.log("pnLoop:" + val)
       this.options.pnLoop = val
+      this.hackResetFun()
+    },
+    mouseOverStop (val) {
+      console.log("mouseOverStop:" + val)
+      this.options.mouseOverStop = val
       this.hackResetFun()
     }
   },
@@ -306,56 +308,60 @@ export default {
   }
 };
 </script>
-
-<style>
+<style type="text/css">
 /* 本例子css */
-.picScroll-left {
-  overflow: hidden;
+.txtScroll-left {
   position: relative;
   border: 1px solid #ccc;
 }
-.picScroll-left .hd {
+.txtScroll-left .pageState {
+  position: absolute;
+  left: 10px;
+  top: 4px;
+}
+.txtScroll-left .hd {
   overflow: hidden;
   height: 30px;
   background: #f4f4f4;
   padding: 0 10px;
 }
-.picScroll-left .prev,
-.picScroll-left .next {
+.txtScroll-left .prev,
+.txtScroll-left .next {
   position: absolute;
+  right: 62px;
   top: 10px;
-  right: 78px;
-
   display: block;
   width: 5px;
   height: 9px;
   margin-right: 5px;
   overflow: hidden;
   cursor: pointer;
-  background: url('../assets/images/arrow.png') 0 0 no-repeat;
+  background: url(../assets/images/arrow.png) no-repeat;
 }
-.picScroll-left .next {
-  right: 9px;
+.txtScroll-left .prev.additional {
+  right: 90px;
+}
+.txtScroll-left .prev.additional2 {
+  right: 103px;
+}
+.txtScroll-left .next {
+  right: 10px;
   background-position: 0 -50px;
 }
-.picScroll-left .prev.additional {
-  right: 105px;
-}
-.picScroll-left .prevStop {
+.txtScroll-left .prevStop {
   background-position: -60px 0;
 }
-.picScroll-left .nextStop {
+.txtScroll-left .nextStop {
   background-position: -60px -50px;
 }
-.picScroll-left .hd ul {
+.txtScroll-left .hd ul {
   float: right;
-  margin-right: 10px;
   overflow: hidden;
   zoom: 1;
   margin-top: 10px;
-  zoom: 1;
+  margin-right: 10px;
 }
-.picScroll-left .hd ul li {
+.txtScroll-left .hd ul li {
   float: left;
   width: 9px;
   height: 9px;
@@ -363,45 +369,29 @@ export default {
   margin-right: 5px;
   text-indent: -999px;
   cursor: pointer;
-  background: url('../assets/images/icoCircle.gif') 0 -9px no-repeat;
+  background: url(../assets/images/icoCircle.gif) 0 -9px no-repeat;
 }
-.picScroll-left .hd ul li.on {
+.txtScroll-left .hd ul li.on {
   background-position: 0 0;
 }
-.picScroll-left .pageState {
-  position: absolute;
-  top: 3px;
-  left: 10px;
-}
-
-.picScroll-left .bd {
+.txtScroll-left .bd {
   padding: 10px;
+  width: 430px;
+  overflow: hidden;
 }
-.picScroll-left .bd ul {
+.txtScroll-left .bd ul {
   overflow: hidden;
   zoom: 1;
 }
-.picScroll-left .bd ul li {
-  margin: 0 8px;
+.txtScroll-left .bd ul li {
+  margin-right: 20px;
   float: left;
-  _display: inline;
-  overflow: hidden;
-  text-align: center;
-}
-.picScroll-left .bd ul li .pic {
-  text-align: center;
-}
-.picScroll-left .bd ul li .pic img {
-  width: 120px;
-  height: 90px;
-  display: block;
-  padding: 2px;
-  border: 1px solid #ccc;
-}
-.picScroll-left .bd ul li .pic a:hover img {
-  border-color: #999;
-}
-.picScroll-left .bd ul li .title {
+  height: 24px;
   line-height: 24px;
+  text-align: left;
+  _display: inline;
+}
+.txtScroll-left .bd ul li span {
+  color: #999;
 }
 </style>

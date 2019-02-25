@@ -1,17 +1,20 @@
 <template>
   <div>
     <div class="titlebox">
-      <h3><span>3. </span>图片滚动-左<a
-          href="https://github.com/rockyxia/vue-superslide/tree/master/examples/pages/3.picScrollLeft.vue"
+      <h3><span>4. </span>图片滚动-上<a
+          href="https://github.com/rockyxia/vue-superslide/tree/master/examples/pages/4.picScrollTop.vue"
           target="_blank"
         >查看本Example完整代码</a></h3>
     </div>
 
     <div class="container clearfix">
-      <div class="demobox">
+      <div
+        class="demobox"
+        style="background: #eee;"
+      >
         <superslide
           :options="options"
-          class="picScroll-left"
+          class="picScroll-top"
           v-if="hackReset"
         >
           <div class="bd">
@@ -89,10 +92,10 @@
                   v-model="effect"
                 >
                   <option
-                    value="left"
+                    value="top"
                     class="show"
-                  >left</option>
-                  <option value="leftLoop">leftLoop</option>
+                  >top</option>
+                  <option value="topLoop">topLoop</option>
                 </select>
               </td>
               <td class="n">自动运行<i>[autoPlay]</i>:</td>
@@ -224,7 +227,7 @@ export default {
   data () {
     return {
       hackReset: true,
-      effect: 'left',
+      effect: 'top',
       autoPlay: true,
       scroll: 1,
       vis: 3,
@@ -234,13 +237,13 @@ export default {
       mouseOverStop: true,
       pnLoop: true,
       isAdditional: false,
-      options: { titCell: ".hd ul", mainCell: ".bd ul", autoPage: true, effect: "left", autoPlay: true, vis: 3 }
+      options: { titCell: ".hd ul", mainCell: ".bd ul", autoPage: true, effect: "top", autoPlay: true, vis: 3 }
     }
   },
   watch: {
     effect (val) {
       console.log("effect:" + val)
-      if (val == "leftLoop") {
+      if (val == "topLoop") {
         this.isAdditional = true
       } else {
         this.isAdditional = false
@@ -309,53 +312,62 @@ export default {
 
 <style>
 /* 本例子css */
-.picScroll-left {
+.picScroll-top {
+  margin: 0 auto;
+  width: 210px;
   overflow: hidden;
   position: relative;
   border: 1px solid #ccc;
+  background-color: #fff;
 }
-.picScroll-left .hd {
+.picScroll-top .pageState {
+  position: absolute;
+  top: 3px;
+  left: 10px;
+}
+.picScroll-top .hd {
   overflow: hidden;
   height: 30px;
   background: #f4f4f4;
   padding: 0 10px;
 }
-.picScroll-left .prev,
-.picScroll-left .next {
+.picScroll-top .prev,
+.picScroll-top .next {
   position: absolute;
-  top: 10px;
-  right: 78px;
+  top: 2px;
+  right: 76px;
 
   display: block;
-  width: 5px;
-  height: 9px;
+  width: 9px;
+  height: 5px;
   margin-right: 5px;
+  margin-top: 10px;
   overflow: hidden;
   cursor: pointer;
-  background: url('../assets/images/arrow.png') 0 0 no-repeat;
+  background: url(../assets/images/arrow.png) 0 -100px no-repeat;
 }
-.picScroll-left .next {
-  right: 9px;
-  background-position: 0 -50px;
-}
-.picScroll-left .prev.additional {
+.picScroll-top .prev.additional {
   right: 105px;
 }
-.picScroll-left .prevStop {
-  background-position: -60px 0;
+.picScroll-top .next {
+  right: 5px;
+  background-position: 0 -140px;
 }
-.picScroll-left .nextStop {
-  background-position: -60px -50px;
+.picScroll-top .prevStop {
+  background-position: -60px -100px;
 }
-.picScroll-left .hd ul {
+.picScroll-top .nextStop {
+  background-position: -60px -140px;
+}
+.picScroll-top .hd ul {
   float: right;
-  margin-right: 10px;
   overflow: hidden;
   zoom: 1;
   margin-top: 10px;
   zoom: 1;
+  margin-right: 10px;
 }
-.picScroll-left .hd ul li {
+.picScroll-top .hd ul li {
   float: left;
   width: 9px;
   height: 9px;
@@ -363,45 +375,36 @@ export default {
   margin-right: 5px;
   text-indent: -999px;
   cursor: pointer;
-  background: url('../assets/images/icoCircle.gif') 0 -9px no-repeat;
+  background: url(../assets/images/icoCircle.gif) 0 -9px no-repeat;
 }
-.picScroll-left .hd ul li.on {
+.picScroll-top .hd ul li.on {
   background-position: 0 0;
 }
-.picScroll-left .pageState {
-  position: absolute;
-  top: 3px;
-  left: 10px;
-}
-
-.picScroll-left .bd {
+.picScroll-top .bd {
   padding: 10px;
 }
-.picScroll-left .bd ul {
+.picScroll-top .bd ul {
   overflow: hidden;
   zoom: 1;
 }
-.picScroll-left .bd ul li {
-  margin: 0 8px;
-  float: left;
-  _display: inline;
-  overflow: hidden;
+.picScroll-top .bd ul li {
+  text-align: center;
+  zoom: 1;
+}
+.picScroll-top .bd ul li .pic {
   text-align: center;
 }
-.picScroll-left .bd ul li .pic {
-  text-align: center;
-}
-.picScroll-left .bd ul li .pic img {
-  width: 120px;
+.picScroll-top .bd ul li .pic img {
+  width: 180px;
   height: 90px;
   display: block;
   padding: 2px;
   border: 1px solid #ccc;
 }
-.picScroll-left .bd ul li .pic a:hover img {
+.picScroll-top .bd ul li .pic a:hover img {
   border-color: #999;
 }
-.picScroll-left .bd ul li .title {
+.picScroll-top .bd ul li .title {
   line-height: 24px;
 }
 </style>
